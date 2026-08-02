@@ -9,3 +9,8 @@ __pycache__/
 .Rhistory
 .RData
 .Ruserdata
+
+.vscode/
+.Rhistory
+.RData
+.Rproj.user/
