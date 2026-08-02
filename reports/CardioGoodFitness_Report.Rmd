@@ -1,0 +1,68 @@
+---
+title: "CardioGoodFitness Customer Analysis"
+author: "Ahmed Ngarmbo"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    theme: cosmo
+---
+
+# Introduction
+
+This report analyzes customer characteristics from the CardioGoodFitness dataset.
+
+# Load Packages
+
+```{r setup}
+library(DBI)
+library(RPostgres)
+library(tidyverse)
+```
+
+# Connect to PostgreSQL
+
+```{r}
+
+con <- dbConnect(
+  RPostgres::Postgres(),
+  dbname = "statistics",
+  host = "localhost",
+  port = 5432,
+  user = "postgres",
+  password = "YOUR_PASSWORD"
+)
+
+```
+
+# Load Data
+
+```{r}
+
+cardio <- dbGetQuery(
+  con,
+  'SELECT * FROM cardio_good_fitness'
+)
+
+head(cardio)
+
+```
+
+# Descriptive Statistics
+
+```{r}
+
+summary(cardio)
+
+```
+
+# Income Distribution
+
+```{r}
+
+ggplot(cardio,
+       aes(x = "Product",
+           y = "Income")) +
+  geom_boxplot()
+
+```
