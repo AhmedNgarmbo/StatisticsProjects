@@ -1,9 +1,16 @@
-x <- rnorm(100)
+df<-iris
+x<-df$Sepal.Length
+
+df$Sepal.Length<-as.numeric(df$Sepal.Length)
+
 
 hist(
-  x,
-  main = "My First R Plot in VS Code",
+  x= df$Sepal.Length,
+  main = "Sepal Length distribution",
   xlab = "Values"
 )
 mean(x)
+sd(x)
+min(x)
 
+summary(df)
